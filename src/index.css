@@ -1,0 +1,180 @@
+/* THIS IS UNIVERSAL SELECTION OF THIS WEB IT WILL DIRECT WORK ON THE WHOLE WEBSITE TAG */
+
+table{
+    margin-top: 25px;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    gap: 50px;
+    color: blue;
+}
+
+a:hover{
+    background-color: rgb(61, 131, 211);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 60px;
+}
+
+.a1{
+    background-color: white;
+    padding: 7px 13px;
+    margin-top: 25px;
+    margin-left: 50px;
+    border-radius: 25px;
+}
+
+.a1:hover{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 60px;
+    padding: 10px 15px;
+}
+button{
+    margin-left: 10px;
+}
+
+/* THIS IS REGISTRATION SECTION CSS IN REACT VITE OF THIS WEB API */
+.main_re{
+    display: flex;
+    width: 100%;
+    gap: 50px;
+    height: 100px;
+    margin-left: 50px;
+}
+.main_re .ma_h1{
+    width: 45%;
+    text-align: center;
+    margin-top: 25px;
+}
+.main_re .ma1_h1{
+    width: 45%;
+    margin-top: 25px;
+}
+.logo{
+    width: 10%;
+    height: 100px;
+}
+.logo img{
+    width: 75%;
+    height: 100px;
+    text-align: center;
+}
+.reg{
+    background-color: blueviolet;
+    padding: 50px;
+}
+
+
+
+/* THIS IS LOGIN SECTION CSS */
+
+.reg_lo{
+    background-color: blueviolet;
+    padding: 50px;
+}
+
+.reg_lo .re_h1{
+    text-align: center;
+}
+
+.logo_lo {
+    text-align: center;
+    height: 100px;
+    background-color: blueviolet;
+}
+.logo_lo img{
+    height: 100px;
+    margin-top: 10px;
+}
+
+
+/* THIS IS ACCOUNT JSX AREA OF THIS WEB */
+
+.reg_ac{
+    background-color: blueviolet;
+    padding: 50px;
+}
+
+.ac_lo{
+    text-align: center;
+}
+
+.ac_lo img{
+    height: 100px;
+    margin-top: 10px;
+}
+
+.ac_h1{
+    text-align: center;
+}
+
+
+/* THIS IS MAIN MENU JSX CSS AREA  */
+.main_menu{
+    display: flex;
+    gap: 50px;
+}
+.main_menu .left{
+    width: 20%;
+}
+.main_menu .right{
+    width: 80%;
+}
+.main_menu .right .right_main{
+    display: flex;
+    gap: 50px;
+}
+.main_menu .right .right_main .right_one{
+    padding-top: 50px;
+    width: 60%;
+    border: 100px;
+    background-color: gainsboro;
+}
+.main_menu .right .right_main .right_two{
+    padding-top: 25px;
+    width: 40%;
+    background-color: gainsboro;
+}
+.main_menu .right .right_main .right_two img{
+    padding-left: 92.5px;
+}
+.main_menu .right .right_main .right_two h1{
+    background-color: rgb(124, 177, 43);
+    color: white;
+    text-align: center;
+}
+.main_menu .right .right_main .right_two p{
+    background-color: rgb(124, 177, 43);
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+/* THIS IS COMPONENTS SIDE JSX CSS AREA FILE */
+
+.side{
+    background-color: rgb(61, 131, 211);
+    height: 100vh;
+}
+.side .logo_si{
+    text-align: center;
+}
+.side .logo_si img{
+    height: 100px;
+}
+
+.side Button {
+    margin-top: 25px;
+    margin-left: 65px;
+}
+.side h2{
+    text-align: center;
+}
+.side h1{
+    padding-left: 25px;
+}

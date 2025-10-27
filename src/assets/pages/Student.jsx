@@ -32,6 +32,7 @@ const Student = () => {
   const [result,setResult]= useState("");
   const [loading,setLoading]= useState(false);
   const [studentlist,setStudentlist] = useState([]);
+  let [update,setUpdate]=useState(false);
 
   const handleClose = () =>{
     setLoading(true)
@@ -54,6 +55,18 @@ const Student = () => {
   };
 
   const handleShow = () => setShow(true);
+  const handleShowModal = (id) => {
+    console.log(id)
+    axios.get(`http://localhost:5000/student/${id}`).then((data)=>{
+      console.log(data.data[0])
+      setStudentname(data.data[0].studentname),
+      setDepartment(data.data[0].department),
+      setStudentid(data.data[0].studentid),
+      setPhonenumber(data.data[0].phonenumber),
+      setResult(data.data[0].result)
+    })
+    setShow(true)
+  };
 
   useEffect(()=>{
     let data = localStorage.getItem("UserInfo")
@@ -95,29 +108,29 @@ const Student = () => {
       <Form>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Student Name</Form.Label>
-        <Form.Control onChange={(e)=>setStudentname(e.target.value)} type="text" placeholder="Enter Student Name" />
+        <Form.Control onChange={(e)=>setStudentname(e.target.value)} type="text" placeholder="Enter Student Name" value={studentname} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicDept">
         <Form.Label>Department Name</Form.Label>
-        <Form.Control onChange={(e)=>setDepartment(e.target.value)} type="text" placeholder="Enter Department Name" />
+        <Form.Control onChange={(e)=>setDepartment(e.target.value)} type="text" placeholder="Enter Department Name" value={department} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicId">
         <Form.Label>Student ID</Form.Label>
-        <Form.Control onChange={(e)=>setStudentid(e.target.value)} type="text" placeholder="Enter Student Id" />
+        <Form.Control onChange={(e)=>setStudentid(e.target.value)} type="text" placeholder="Enter Student Id" value={studentid} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicNumber">
         <Form.Label>Phone Number</Form.Label>
-        <Form.Control onChange={(e)=>setPhonenumber(e.target.value)} type="text" placeholder="Enter Student Phone Number" />
+        <Form.Control onChange={(e)=>setPhonenumber(e.target.value)} type="text" placeholder="Enter Student Phone Number" value={phonenumber} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicNumber">
         <Form.Label>Result</Form.Label>
-        <Form.Control onChange={(e)=>setResult(e.target.value)} type="text" placeholder="Enter Student Result" />
+        <Form.Control onChange={(e)=>setResult(e.target.value)} type="text" placeholder="Enter Student Result" value={result} />
       </Form.Group>
 
     </Form>
@@ -132,6 +145,16 @@ const Student = () => {
                 </Spinner>
               :
               "Create Student"
+            }
+          </Button>
+          <Button disabled={loading} variant="primary" onClick={handleShowModal}>
+            {loading
+              ?
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              :
+              "Update teacher"
             }
           </Button>
         </Modal.Footer>
@@ -161,7 +184,7 @@ const Student = () => {
             <td>{item.studentid}</td>
             <td>{item.phonenumber}</td>
             <td>{item.result}</td>
-            <td><Button variant="primary" onClick={()=>handleEdit}><FaPencil />Edit</Button> <Button variant="danger" onClick={()=>handleDelete(item._id)}><RiDeleteBin5Line />Delete</Button></td>
+            <td><Button variant="primary" onClick={()=>handleShowModal(item._id)}><FaPencil />Edit</Button> <Button variant="danger" onClick={()=>handleDelete(item._id)}><RiDeleteBin5Line />Delete</Button></td>
           </tr>
         ))}
 

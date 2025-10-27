@@ -34,6 +34,7 @@ const Teacher = () => {
   const [teacherphonenumber,setTeacherphonenumber] = useState("");
   const [loading,setLoading] = useState(false);
   const [teacherlist,setTeacherlist] = useState([])
+  let [update,setUpdate]=useState(false);
 
   const handleClose = () =>{
     setLoading(true)
@@ -57,7 +58,14 @@ const Teacher = () => {
   };
   const handleShow = () => setShow(true);
   const handleShowModal = (id) =>{
-    console.log(id),
+    setUpdate(true)
+    axios.get(`http://localhost:5000/teacher/${id}`).then((data)=>{
+      console.log(data.data[0])
+      setTeachername(data.data[0].teachername),
+      setTeacherdepartment(data.data[0].teacherdepartment),
+      setTeacherid(data.data[0].teacherid),
+      setTeacherphonenumber(data.data[0].teacherphonenumber)
+    })
     setShow(true)
   };
 
@@ -99,25 +107,25 @@ const Teacher = () => {
       <Form>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Teacher Name</Form.Label>
-        <Form.Control onChange={(e)=>setTeachername(e.target.value)} type="text" placeholder="Enter Teacher Name" />
+        <Form.Control onChange={(e)=>setTeachername(e.target.value)} type="text" placeholder="Enter Teacher Name" value={teachername} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicDept">
         <Form.Label>Department Name</Form.Label>
-        <Form.Control onChange={(e)=>setTeacherdepartment(e.target.value)} type="text" placeholder="Enter Department Name" />
+        <Form.Control onChange={(e)=>setTeacherdepartment(e.target.value)} type="text" placeholder="Enter Department Name" value={teacherdepartment} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicId">
         <Form.Label>Teacher ID</Form.Label>
-        <Form.Control onChange={(e)=>setTeacherid(e.target.value)} type="text" placeholder="Enter Teacher Id" />
+        <Form.Control onChange={(e)=>setTeacherid(e.target.value)} type="text" placeholder="Enter Teacher Id" value={teacherid} />
       </Form.Group>
 
 
       <Form.Group className="mb-3" controlId="formBasicNumber">
         <Form.Label>Phone Number</Form.Label>
-        <Form.Control onChange={(e)=>setTeacherphonenumber(e.target.value)} type="text" placeholder="Enter Teacher Phone Number" />
+        <Form.Control onChange={(e)=>setTeacherphonenumber(e.target.value)} type="text" placeholder="Enter Teacher Phone Number" value={teacherphonenumber} />
       </Form.Group>
 
     </Form>
@@ -132,6 +140,16 @@ const Teacher = () => {
                 </Spinner>
               :
               "Create new Teacher"
+            }
+          </Button>
+          <Button disabled={loading} variant="primary" onClick={handleShowModal}>
+            {loading
+              ?
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              :
+              "Update Teacher"
             }
           </Button>
         </Modal.Footer>

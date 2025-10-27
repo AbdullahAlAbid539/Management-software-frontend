@@ -1,10 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
-import {useNavigate} from 'react-router'
+import {useNavigate} from 'react-router';
 import { useEffect } from 'react';
 
 const Login = () => {
@@ -130,7 +130,7 @@ const Login = () => {
         }
         <Form.Group className="mb-3" controlId="formBasicId">
             <Form.Label>ID Number</Form.Label>
-            <Form.Control onChange={handleid} type="number" placeholder="Enter Your ID" />
+            <Form.Control onChange={handleid} type="text" placeholder="Enter Your ID" />
         </Form.Group>
 
         {

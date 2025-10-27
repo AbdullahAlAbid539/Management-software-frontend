@@ -72,7 +72,7 @@ button{
 /* THIS IS LOGIN SECTION CSS */
 
 .reg_lo{
-    background-color: blueviolet;
+    background-color: wheat;
     padding: 50px;
 }
 
@@ -83,7 +83,7 @@ button{
 .logo_lo {
     text-align: center;
     height: 100px;
-    background-color: blueviolet;
+    background-color: wheat;
 }
 .logo_lo img{
     height: 100px;
@@ -94,7 +94,7 @@ button{
 /* THIS IS ACCOUNT JSX AREA OF THIS WEB */
 
 .reg_ac{
-    background-color: blueviolet;
+    background-color: wheat;
     padding: 50px;
 }
 
@@ -158,23 +158,25 @@ button{
 /* THIS IS COMPONENTS SIDE JSX CSS AREA FILE */
 
 .side{
-    background-color: rgb(61, 131, 211);
+    background-color: wheat;
     height: 100vh;
 }
 .side .logo_si{
     text-align: center;
 }
 .side .logo_si img{
-    height: 100px;
+    height: 75px;
 }
 
-.side Button {
-    margin-top: 25px;
-    margin-left: 65px;
+.side Button{
+    margin-left: -20px;
+    margin-top: 15px;
 }
-.side h2{
+.side h5{
     text-align: center;
+    color: black;
 }
-.side h1{
-    padding-left: 25px;
+.side h4{
+    padding-left: 10px;
+    color: black;
 }

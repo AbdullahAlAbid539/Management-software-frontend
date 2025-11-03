@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { data, useNavigate } from 'react-router';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaPencil } from "react-icons/fa6";
 import Spinner from 'react-bootstrap/Spinner';
@@ -52,11 +52,35 @@ const Teacher = () => {
 
     })
   };
+  const handleCloseModalforUpdate = () =>{
+    setUpdate(true)
+    setLoading(true)
+    axios.patch(`http://localhost:5000/teacher/${id}`,{
+      teachername: teachername,
+      teacherdepartment: teacherdepartment,
+      teacherid: teacherid,
+      teacherphonenumber: teacherphonenumber
+    }).then(()=>{
+        axios.get("http://localhost:5000/teacherlist").then((data)=>{
+          setTeacherlist(data.data)
+          setLoading(false)
+          setShow(false)
+        })
+
+    })
+  };
 
   const handleCloseModal = ()=>{
     setShow(false)
+    setUpdate(false)
   };
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setTeachername(""),
+    setTeacherdepartment(""),
+    setTeacherid(""),
+    setTeacherphonenumber("")
+    setShow(true)
+  };
   const handleShowModal = (id) =>{
     setUpdate(true)
     axios.get(`http://localhost:5000/teacher/${id}`).then((data)=>{
@@ -68,6 +92,7 @@ const Teacher = () => {
     })
     setShow(true)
   };
+
 
 
   useEffect(()=>{
@@ -132,7 +157,9 @@ const Teacher = () => {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button disabled={loading} variant="primary" onClick={handleClose}>
+
+
+          {<Button disabled={loading} variant="primary" onClick={handleClose}>
             {loading
               ?
                 <Spinner animation="border" role="status">
@@ -141,8 +168,8 @@ const Teacher = () => {
               :
               "Create new Teacher"
             }
-          </Button>
-          <Button disabled={loading} variant="primary" onClick={handleShowModal}>
+          </Button>}
+          {<Button disabled={loading} variant="primary" onClick={handleShowModal}>
             {loading
               ?
                 <Spinner animation="border" role="status">
@@ -151,7 +178,7 @@ const Teacher = () => {
               :
               "Update Teacher"
             }
-          </Button>
+          </Button>}
         </Modal.Footer>
       </Modal>
 
@@ -177,7 +204,7 @@ const Teacher = () => {
           <td>{item.teacherdepartment}</td>
           <td>{item.teacherid}</td>
           <td>{item.teacherphonenumber}</td>
-          <td><Button variant="primary" onClick={()=>handleShowModal(item._id)}><FaPencil />Edit</Button> <Button variant="danger" onClick={()=>handleDelete(item._id)}><RiDeleteBin5Line />Delete</Button></td>
+          <td><Button variant="primary" onClick={()=>handleCloseModalforUpdate(item._id)}><FaPencil />Edit</Button> <Button variant="danger" onClick={()=>handleDelete(item._id)}><RiDeleteBin5Line />Delete</Button></td>
         </tr>
         ))}
       </tbody>
